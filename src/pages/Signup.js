@@ -6,12 +6,16 @@ const Signup = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const email = useField("email");
   const password = useField("password");
+  const role = useField("role");
+  const phoneNumber = useField("phone");
+  const firstName = useField("firstName");
+  const lastName = useField("lastName");
 
   const { signup, error } = useSignup("/api/users/signup");
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    await signup({ email: email.value, password: password.value });
+    await signup({ email: email.value, password: password.value, firstName: firstName.value, lastName: lastName.value, role: role.value, phoneNumber: phoneNumber.value});
     if (!error) {
       console.log("success");
       setIsAuthenticated(true);
@@ -27,6 +31,14 @@ const Signup = ({ setIsAuthenticated }) => {
         <input {...email} />
         <label>Password:</label>
         <input {...password} />
+        <label>First Name:</label>
+        <input {...firstName} />
+        <label>Last Name:</label>
+        <input {...lastName} />
+        <label>Role:</label>
+        <input {...role} />
+        <label>Phone Number:</label>
+        <input {...phoneNumber} />
         <button>Sign up</button>
       </form>
     </>

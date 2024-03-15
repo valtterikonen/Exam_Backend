@@ -21,7 +21,7 @@ const Login = ({ setIsAuthenticated }) => {
 
   return (
     <>
-      <form className="Login" onSubmit={handleFormSubmit}>
+      <form className="login" onSubmit={handleFormSubmit}>
         <h3>Login</h3>
         <label>Email address:</label>
         <input {...email} />
